@@ -3,13 +3,15 @@
  */
 angular.module('MindCards.Directives',[])
     .controller('CardPreviewController', function($scope) {
-        $scope.delete = function() {
-            console.log('deleted ' + $scope.card);
-        }
+        $scope.delete = function($event) {
+            console.log('deleted ' + $scope.card.id);
+            $event.stopPropagation();
+        };
 
-        $scope.edit = function() {
-            console.log('edit ' + $scope.card);
-        }
+        $scope.edit = function($event) {
+            console.log('edit ' + $scope.card.id);
+            $event.stopPropagation();
+        };
 
     })
     .directive('cardPreview', function($compile) {
@@ -22,10 +24,12 @@ angular.module('MindCards.Directives',[])
             controller : 'CardPreviewController',
             link : function($scope, element, attrs) {
                 var fastCardControls = angular.element('<span class="topRight"/>');
-                fastCardControls.append('<a class="btn btn-sm" >get</a><a class="btn btn-sm" ng-click="edit()">edit</a><a class="btn btn-sm" ng-click="delete()">del</a>');
-                $compile(fastCardControls)($scope);
-
+                fastCardControls.append('<a class="btn btn-sm" >get</a>'
+                    +'<a class="btn btn-sm" ng-click="edit($event)">edit</a>'
+                    +'<a class="btn btn-sm" ng-click="delete($event)">del</a>');
+                
                 element.bind('mouseenter', function () {
+                    $compile(fastCardControls)($scope);
                     element.children(0).append(fastCardControls);
                 });
 
