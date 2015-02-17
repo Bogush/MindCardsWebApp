@@ -1,7 +1,8 @@
-<div class="centralText" >
+<div class="centralText">
     <div class="panel collectionInfo">
-        <h1 ng-if="collection.name">{{collection.name}}</h1>
+        <h1 ng-if="collection.name"><i class="fa fa-th"></i> {{collection.name}}</h1><!--TODO trail collection hierarchy-->
+
         <h2 ng-if="collection.name">{{collection.description}}</h2>
     </div>
-        <card-preview ng-repeat="card in collection.cards" card="card"/>
+    <card-preview ng-repeat="card in collection.cards" card="card"/>
 </div>
