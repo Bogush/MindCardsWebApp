@@ -14,5 +14,9 @@ MindCards.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'includes/collection/collection.html',
             controller: 'CollectionController'
         })
+        .when('/collections/:collectionId', {
+            templateUrl: 'includes/collection/collection.html',
+            controller: 'CollectionController'
+        })
         .otherwise({redirectTo: '/collection'});
 }]);

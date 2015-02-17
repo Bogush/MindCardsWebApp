@@ -1,11 +1,12 @@
 <div class="navbar navbar-default clearfix sidepaddings" ng-controller="HeaderController">
     <a href="../../" class="navbar-brand">MindCards</a>
-    <a class="float-left font-large btn btn-default" ng-click="showMenu()">Home</a>
-    <a class="float-left font-large btn btn-default" ng-click="showMenu()">Collection</a>
-    <a class="float-left font-large btn btn-default" href="/new">New</a>
+    <a class="float-left font-large btn btn-default" ng-click="showMenu()"><i class="fa fa-home"></i> Home</a>
+    <a class="float-left font-large btn btn-default" ng-click="showMenu()"><i class="fa fa-th"></i> Collection</a>
+    <a class="float-left font-large btn btn-default" href="/new"><i class="fa fa-plus-square"></i> New</a>
     <div class="navbar-form navbar-left"><input type="text" class="form-control" placeholder="Search" size="20"></div>
+    <a class="float-left font-large btn btn-default"><i class="fa fa-search"></i></a>
     <div class="nav navbar-nav navbar-right">
-    <a class="float-right font-large btn btn-default" ng-click="login()"  ng-hide="user">Log In</a>
-    <a class="float-right font-large btn btn-default" ng-show="user" ng-click="logout()">Log Out</a>
+    <a class="float-right font-large btn btn-default" ng-click="login()"  ng-hide="user"><i class="fa fa-sign-in"></i> Sign In</a>
+    <a class="float-right font-large btn btn-default" ng-show="user" ng-click="logout()"><i class="fa fa-sign-out"></i> Log Out</a>
     </div>
 </div>

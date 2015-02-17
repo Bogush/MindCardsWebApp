@@ -24,9 +24,9 @@ angular.module('MindCards.Directives')
             controller : 'CardPreviewController',
             link : function($scope, element, attrs) {
                 var fastCardControls = angular.element('<span class="fastCardControls"/>');
-                fastCardControls.append('<a class="btn btn-sm" >get</a>'
-                    +'<a class="btn btn-sm" ng-click="edit($event)">edit</a>'
-                    +'<a class="btn btn-sm" ng-click="delete($event)">del</a>');
+                fastCardControls.append('<a class="btn btn-sm fa fa-plus"></a>'
+                    +'<a class="btn btn-sm fa fa-pencil" ng-click="edit($event)"></a>'
+                    +'<a class="btn btn-sm fa fa-trash" ng-click="delete($event)"></a>');
 
                 element.bind('mouseenter', function () {
                     $compile(fastCardControls)($scope);

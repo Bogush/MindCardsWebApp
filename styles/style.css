@@ -3,6 +3,12 @@
     position: relative;
 }
 
+.collectionInfo {
+    text-align: left;
+    padding:20px;
+    margin: 20px;
+}
+
 .float-right {
     float: right;
 }
@@ -30,8 +36,13 @@
     right:0;
 }
 
+.marginedIcon {
+    margin:5px;
+}
+
 .cardPreview {
     position: relative;
+    cursor: pointer;
 }
 
 .unselectable {
@@ -62,7 +73,6 @@
 .flipper {
     transition: 0.6s;
     transform-style: preserve-3d;
-
     position: relative;
 }
 
