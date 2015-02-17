@@ -1,6 +1,7 @@
 angular.module('MindCards.Collection', [])
     .controller('CollectionController', function($scope) {
-        $scope.cards=[
+        $scope.collection = {name : 'Collection1', description: 'Test Mock Collection'};
+        $scope.collection.cards=[
             {
                 id : '1',
                 question : 'Question1Question1Question1Question1Question1Question1 Question1 Question1Question1 Question1 Question1 Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1',

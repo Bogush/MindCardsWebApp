@@ -24,7 +24,7 @@
     padding-right: 20px;
 }
 
-.topRight {
+.fastCardControls {
     position: absolute;
     top:0;
     right:0;
@@ -74,7 +74,7 @@
 }
 
 .front {
-    z-index: 2;
+    z-index: 4;
     /* for firefox 31 */
     transform: rotateY(0deg);
 }
