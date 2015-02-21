@@ -1,9 +1,11 @@
 angular.module('MindCards.Collection', [])
-    .controller('CollectionController', function($scope) {
-        $scope.cards=[
+    .controller('CollectionController', [ '$scope', '$routeParams', function($scope, $routeParams) {
+        $scope.collection = {name : 'Collection1', description: 'Test Mock Collection'};
+        $scope.collection.id = $routeParams.collectionId;
+        $scope.collection.cards=[
             {
                 id : '1',
-                question : 'Question1Question1Question1Question1Question1Question1 Question1 Question1Question1 Question1 Question1 Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1',
+                question : 'Question1Question1Question1 Question1Question1Question1 Question1 Question1Question1 Question1 Question1 Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1',
                 answer : 'Answer1'
             },
             {
@@ -43,4 +45,4 @@ angular.module('MindCards.Collection', [])
             }
         ];
 
-    });
+    }]);

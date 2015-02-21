@@ -3,8 +3,18 @@
     position: relative;
 }
 
+.collectionInfo {
+    display: inline-block;
+    text-align: left;
+    padding:20px;
+}
+
 .float-right {
     float: right;
+}
+
+.trainingCollectionInfo {
+    float: left;
 }
 
 .inline-block {
@@ -13,6 +23,14 @@
 
 .clearfix::after {
     clear: both;
+}
+
+.knowledgeQuestion {
+    #display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right:0;
+    padding: 5px;
 }
 
 .font-large {
@@ -24,20 +42,32 @@
     padding-right: 20px;
 }
 
-.topRight {
+.fastCardControls {
     position: absolute;
     top:0;
     right:0;
 }
 
-.cardPreview {
-    position: relative;
-    overflow: hidden;
+.marginedIcon {
+    margin:5px;
 }
 
-/*flip animation*/
+.card {
+    position: relative;
+    cursor: pointer;
+}
 
-.flip-container {
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/*flip animation for Preview and partly for training*/
+
+.cardPreviewFlipContainer {
     margin: 10px;
     perspective: 1000;
     -webkit-perspective: 1000;
@@ -47,15 +77,25 @@
     transform: rotateY(180deg);
 }
 
-.flip-container, .front, .back, .cardPreview {
+.cardPreviewFlipContainer, .card, .cardPreviewSize {
     height: 300px;
     width: 300px;
+}
+
+.trainingCardFlipContainer, .trainingSize {
+    height: 500px;
+    width: 500px;
+}
+
+.trainingCardFlipContainer {
+    perspective: 1000;
+    -webkit-perspective: 1000;
+    text-align: left;
 }
 
 .flipper {
     transition: 0.6s;
     transform-style: preserve-3d;
-
     position: relative;
 }
 
@@ -67,27 +107,45 @@
 }
 
 .front {
-    z-index: 2;
+    z-index: 4;
     /* for firefox 31 */
     transform: rotateY(0deg);
+}
+
+.trainingContainer {
+    text-align: center;
 }
 
 .back {
     transform: rotateY(180deg);
 }
-/*end of flip animation*/
+
+.stackContainer {
+    display: inline-block;
+}
+
+/*end of flip animation for Preview*/
 
 .relative {
     position: relative;
 }
 
 .centerOfParent {
-    max-height: 250px;
     padding : 10px;
     overflow: hidden;
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.cardTrainingText {
+    max-height: 450px;
+    text-align: center;
+}
+
+.cardPreviewText {
+    max-height: 250px;
+    text-align: center;
 }
 
 .centralText {

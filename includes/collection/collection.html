@@ -1,5 +1,10 @@
-<div class="centralText" >
-    <card-preview ng-repeat="card in cards" card="card">
-
-    </card-preview>
+<div class="centralText">
+    <div class="collectionInfo">
+        <h1 ng-if="collection.name"><i class="fa fa-th"></i> {{collection.name}}</h1>
+        <!--TODO trail collection hierarchy        -->
+        <h2 ng-if="collection.description">{{collection.description}}</h2>
+    </div>
+    <div>
+        <card-preview ng-repeat="card in collection.cards" card="card"/>
+    </div>
 </div>

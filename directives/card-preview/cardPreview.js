@@ -1,15 +1,17 @@
 /**
  * Created by Alexander Bogush on 2/15/2015.
  */
-angular.module('MindCards.Directives',[])
+angular.module('MindCards.Directives')
     .controller('CardPreviewController', function($scope) {
-        $scope.delete = function() {
-            console.log('deleted ' + $scope.card);
-        }
+        $scope.delete = function($event) {
+            console.log('deleted ' + $scope.card.id);
+            $event.stopPropagation();
+        };
 
-        $scope.edit = function() {
-            console.log('edit ' + $scope.card);
-        }
+        $scope.edit = function($event) {
+            console.log('edit ' + $scope.card.id);
+            $event.stopPropagation();
+        };
 
     })
     .directive('cardPreview', function($compile) {
@@ -21,16 +23,18 @@ angular.module('MindCards.Directives',[])
             templateUrl : '/directives/card-preview/cardPreview.html',
             controller : 'CardPreviewController',
             link : function($scope, element, attrs) {
-                var fastCardControls = angular.element('<span class="topRight"/>');
-                fastCardControls.append('<a class="btn btn-sm" >get</a><a class="btn btn-sm" ng-click="edit()">edit</a><a class="btn btn-sm" ng-click="delete()">del</a>');
-                $compile(fastCardControls)($scope);
+                var fastCardControls = angular.element('<span class="fastCardControls"/>');
+                fastCardControls.append('<a class="btn btn-sm fa fa-plus"></a>'
+                    +'<a class="btn btn-sm fa fa-pencil" ng-click="edit($event)"></a>'
+                    +'<a class="btn btn-sm fa fa-trash" ng-click="delete($event)"></a>');
 
                 element.bind('mouseenter', function () {
-                    element.children(0).append(fastCardControls);
+                    $compile(fastCardControls)($scope);
+                    element.find('.front, .back').append(fastCardControls);
                 });
 
                 element.bind('mouseleave', function () {
-                    fastCardControls.remove();
+                    element.find('.fastCardControls').remove();
                 });
 
                 element.bind('click', function() {

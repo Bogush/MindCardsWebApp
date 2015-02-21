@@ -1,0 +1,26 @@
+<div class="stackContainer">
+    <!--<div class="panel card1"/>
+    <div class="panel card2"/>
+    <div class="panel card3"/>
+    <div class="panel card4"/>
+    <div class="panel card5"/>
+    <div class="panel card6"/> TODO Here May Be a stack-->
+    <div class="inline-block trainingCardFlipContainer card">
+        <div class="flipper unselectable">
+            <div class="panel front trainingSize">
+                <div style="padding: 5px;" ng-if="collection"><!--TODO move style to class-->
+                    <i class="fa fa-th"></i> {{collection}}
+                </div>
+                <div class="centerOfParent cardTrainingText">{{card.question}}</div>
+            </div>
+            <div class="panel back trainingSize">
+                <div class="centerOfParent cardTrainingText">{{card.answer}}</div>
+                <div class="knowledgeQuestion">
+                    <p>How do you rate your knowledge?</p>
+                    <a class="btn btn-success" ng-click="knowledgeNotOk($event)"><i class="fa fa-exclamation"></i> Not Ok</a>
+                    <a class="btn btn-warning" ng-click="knowledgeOk($event)"><i class="fa fa-check"></i> Ok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
