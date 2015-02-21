@@ -8,99 +8,87 @@ angular.module('MindCards.Collection')
             {
                 id: '1',
                 question: 'Question1Question1Question1 Question1Question1Question1 Question1 Question1Question1 Question1 Question1 Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1Question1Question1 Question1 Question1 Question1Question1 Question1 Question1 Question1',
-                answer: 'Answer1'
+                answer: 'Answer1',
+                knowledgeRate: 1
             },
             {
                 id: '2',
                 question: 'Question2',
-                answer: 'Answer2'
+                answer: 'Answer2',
+                knowledgeRate: 1
             },
             {
                 id: '3',
                 question: 'Question3',
-                answer: 'Answer3'
+                answer: 'Answer3',
+                knowledgeRate: 1
             },
             {
                 id: '4',
                 question: 'Question4',
-                answer: 'Answer4'
+                answer: 'Answer4',
+                knowledgeRate: 1
             },
             {
                 id: '5',
                 question: 'Question5',
-                answer: 'Answer5'
+                answer: 'Answer5',
+                knowledgeRate: 1
             },
             {
                 id: '6',
                 question: 'Question6',
-                answer: 'Answer6'
+                answer: 'Answer6',
+                knowledgeRate: 1
             },
             {
                 id: '7',
                 question: 'Question7',
-                answer: 'Answer7'
+                answer: 'Answer7',
+                knowledgeRate: 1
             },
             {
                 id: '8',
                 question: 'Question8',
-                answer: 'Answer8'
+                answer: 'Answer8',
+                knowledgeRate: 1
             }
         ];
         $scope.currentCard = $scope.collection.cards[0];//TODO algorithm for better training: the cards you know worse appear more often
         //rate is from 1 to 5. the worse you knew the answer the more often will the card appear
         //TODO move to config
         $scope.rateToFrequencyMap = {
-            1: 5, 2: 4, 3: 3, 4: 2, 5: 1
+            1: 1, 0: 5
         };
 
-        $scope.changeCard = function () {
-            var randomIndex = Math.floor(Math.random() * $scope.cardIds.length);
-            var cardId = $scope.cardIds[randomIndex];
-            $scope.cardIds.splice(randomIndex, 1);
-            for (var card in $scope.collection.cards) {
-                if (cardId == card.id) {
-                    $scope.currentCard = card;
-                    break;
-                }
-            }
+        $scope.nextCard = function () {
+            var currentCardId = $scope.cardIds[_.random($scope.cardIds.length-1)];
+            $scope.currentCard = _.filter($scope.collection.cards, {id : currentCardId})[0];
         };
 
-        $scope.updateCurrentCardIds = function (currentCard) {
-
-            for (var i = 0; i < $scope.cardIds.length; i++) {
-                if ($scope.cardIds[i] == currentCard.id) {
-                    $scope.cardIds.splice(i, 1);
-                }
-            }
-
+        $scope.updateCurrentCardInQueue = function (currentCard) {
+            _.pull($scope.cardIds, currentCard.id);
             var frequency = $scope.rateToFrequencyMap[currentCard.knowledgeRate];
-
-            for (var i = 0; i < frequency; i++) {
-                $scope.cardIds.push(currentCard.id);
-            }
-
-        };
-
-        $scope.rateKnowledge = function (rate) {
-            //TODO maybe there is a better name
-            $scope.currentCard.knowledgeRate = rate;//TODO logic of keeping already seen times in mind. Or not?
-            $scope.updateCurrentCardIds($scope.currentCard);
+            $scope.cardIds = _.shuffle($scope.cardIds.concat(_.times(frequency, function () {
+                return currentCard.id;
+            })));
 
         };
 
-        $scope.setCollection = function (collectionOfCards) {
-            $scope.collection = collectionOfCards;
-            $scope.cardIds = [];
-            $scope.updateCardIds();
+        $scope.rateCardKnowledge = function (rate) {
+            $scope.currentCard.knowledgeRate = rate;
+            $scope.updateCurrentCardInQueue($scope.currentCard);
+
         };
 
         $scope.updateCardIds = function () {
-            for (var card in $scope.collection.cards) {
+            _.forEach($scope.collection.cards, function(card) {
                 var frequency = $scope.rateToFrequencyMap[card.knowledgeRate];
-                for (var i = 0; i < frequency; i++) {
-                    $scope.cardIds.push(card.id);
-                }
-            }
+                $scope.cardIds = $scope.cardIds.concat(_.times(frequency, function() {return card.id;}));
+            });
+            $scope.cardIds = _.shuffle($scope.cardIds);
         };
 
+        $scope.cardIds = [];
+        $scope.updateCardIds();
     }]);

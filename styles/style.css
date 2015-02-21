@@ -4,13 +4,17 @@
 }
 
 .collectionInfo {
+    display: inline-block;
     text-align: left;
     padding:20px;
-    margin: 20px;
 }
 
 .float-right {
     float: right;
+}
+
+.trainingCollectionInfo {
+    float: left;
 }
 
 .inline-block {
@@ -19,6 +23,14 @@
 
 .clearfix::after {
     clear: both;
+}
+
+.knowledgeQuestion {
+    #display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right:0;
+    padding: 5px;
 }
 
 .font-large {
@@ -40,7 +52,7 @@
     margin:5px;
 }
 
-.cardPreview {
+.card {
     position: relative;
     cursor: pointer;
 }
@@ -53,9 +65,9 @@
     user-select: none;
 }
 
-/*flip animation*/
+/*flip animation for Preview and partly for training*/
 
-.flip-container {
+.cardPreviewFlipContainer {
     margin: 10px;
     perspective: 1000;
     -webkit-perspective: 1000;
@@ -65,9 +77,20 @@
     transform: rotateY(180deg);
 }
 
-.flip-container, .front, .back, .cardPreview {
+.cardPreviewFlipContainer, .card, .cardPreviewSize {
     height: 300px;
     width: 300px;
+}
+
+.trainingCardFlipContainer, .trainingSize {
+    height: 500px;
+    width: 500px;
+}
+
+.trainingCardFlipContainer {
+    perspective: 1000;
+    -webkit-perspective: 1000;
+    text-align: left;
 }
 
 .flipper {
@@ -89,22 +112,40 @@
     transform: rotateY(0deg);
 }
 
+.trainingContainer {
+    text-align: center;
+}
+
 .back {
     transform: rotateY(180deg);
 }
-/*end of flip animation*/
+
+.stackContainer {
+    display: inline-block;
+}
+
+/*end of flip animation for Preview*/
 
 .relative {
     position: relative;
 }
 
 .centerOfParent {
-    max-height: 250px;
     padding : 10px;
     overflow: hidden;
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.cardTrainingText {
+    max-height: 450px;
+    text-align: center;
+}
+
+.cardPreviewText {
+    max-height: 250px;
+    text-align: center;
 }
 
 .centralText {
